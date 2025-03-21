@@ -1,0 +1,64 @@
+#!/bin/bash
+
+# Verificar versión de Docker
+docker --version
+
+# Ejecutar contenedor de prueba
+docker run hello-world
+
+# Listar contenedores activos
+docker ps
+
+# Listar todos los contenedores (incluyendo detenidos)
+docker ps -a
+
+# Descargar una imagen de Docker Hub
+docker pull ubuntu
+
+# Listar imágenes disponibles
+docker images
+
+# Ejecutar un contenedor en modo interactivo
+docker run -it ubuntu /bin/bash
+
+# Detener un contenedor
+docker stop <container_id>
+
+# Eliminar un contenedor
+docker rm <container_id>
+
+# Eliminar una imagen
+docker rmi <image_id>
+
+# Crear y ejecutar un contenedor en segundo plano
+docker run -d --name mi_app nginx
+
+# Mapear puertos del host al contenedor
+docker run -d -p 8080:80 nginx
+
+# Crear un volumen
+docker volume create mi_volumen
+
+# Ejecutar un contenedor con un volumen
+docker run -v mi_volumen:/data ubuntu
+
+# Listar volúmenes
+docker volume ls
+
+# Crear una red personalizada
+docker network create mi_red
+
+# Conectar un contenedor a la red personalizada
+docker network connect mi_red mi_contenedor
+
+# Eliminar contenedores detenidos
+docker container prune -f
+
+# Eliminar imágenes no usadas
+docker image prune -a -f
+
+# Eliminar volúmenes no usados
+docker volume prune -f
+
+# Eliminar todo lo no utilizado en Docker
+docker system prune -a -f
